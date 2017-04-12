@@ -29,8 +29,9 @@ namespace SysOdonto1
         {
             InitializeComponent();
             paciente = new Paciente();
-            
-
+            enableFormFields(false);
+            btnSalvar.Enabled = false;
+            btmAtualizar.Enabled = false;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -47,13 +48,13 @@ namespace SysOdonto1
                     {
                         switch (i) {
                             case 1: txtNome.Text = dt.Rows[0].ItemArray[i].ToString(); break;
-                            case 2: dateTimePicker1.Text = dt.Rows[0].ItemArray[i].ToString(); break;
+                            case 2: txtDataNasc.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 3: txtLogradouro.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 4: txtNumero.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 5: txtComplm.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 6: txtBairro.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 7: txtCidade.Text = dt.Rows[0].ItemArray[i].ToString(); break;
-                            case 8: cmb_UF.Text = dt.Rows[0].ItemArray[i].ToString(); break;
+                            case 8: txtUF.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 9: txtCEP.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 10: txtTelefone.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 11: ckb_Ativo.Checked  = Convert.ToBoolean(dt.Rows[0].ItemArray[i].ToString()); break;
@@ -70,19 +71,20 @@ namespace SysOdonto1
                         switch (i)
                         {
                             case 0: txtCodigo.Text = dt.Rows[0].ItemArray[i].ToString(); break;
-                            case 2: dateTimePicker1.Text = dt.Rows[0].ItemArray[i].ToString(); break;
+                            case 2: txtDataNasc.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 3: txtLogradouro.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 4: txtNumero.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 5: txtComplm.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 6: txtBairro.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 7: txtCidade.Text = dt.Rows[0].ItemArray[i].ToString(); break;
-                            case 8: cmb_UF.Text = dt.Rows[0].ItemArray[i].ToString(); break;
+                            case 8: txtUF.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 9: txtCEP.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 10: txtTelefone.Text = dt.Rows[0].ItemArray[i].ToString(); break;
                             case 11: ckb_Ativo.Checked = Convert.ToBoolean(dt.Rows[0].ItemArray[i].ToString()); break;
                         }
                     }
             }
+            btnSalvar.Enabled = false;
 
         }
 
@@ -148,7 +150,24 @@ namespace SysOdonto1
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
+            {
+                clear();
 
+                void clear()
+                {
+
+                    txtCodigo.Text = "";
+                    txtBairro.Text = "";
+                    txtCidade.Text = "";
+                    txtComplm.Text = "";
+                    txtLogradouro.Text = "";
+                    txtNome.Text = "";
+                    txtNumero.Text = "";
+                    txtTelefone.Text = "";
+                    txtUF.Text = "";
+                    ckb_Ativo.Checked = false;
+                }
+            }
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
@@ -208,7 +227,7 @@ namespace SysOdonto1
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
         {
-
+            btnSalvar.Enabled = true;
         }
 
         private void btmAtualizar_Click(object sender, EventArgs e)
@@ -235,17 +254,37 @@ namespace SysOdonto1
         private void getText()
         {
             nome = txtNome.Text;
-            dataNasc = dateTimePicker1.Text;
+            dataNasc = txtDataNasc.Text;
             logradouro = txtLogradouro.Text;
             num = txtNumero.Text;
             complm = txtComplm.Text;
             bairro = txtBairro.Text;
             cidade = txtCidade.Text;
-            estado = cmb_UF.Text;
+            estado = txtUF.Text;
             cep = txtCEP.Text;
             fone = txtTelefone.Text;
             ativo = ckb_Ativo.CheckState.ToString().Equals("Checked");
         }
 
+        private void frmPesquisa_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void enableFormFields(bool flag)
+        {
+            txtBairro.ReadOnly = !flag;
+            txtCidade.ReadOnly = !flag;
+            txtComplm.ReadOnly = !flag;
+            txtLogradouro.ReadOnly = !flag;
+            txtDataNasc.ReadOnly = !flag;
+            txtNumero.ReadOnly = !flag;
+            txtTelefone.ReadOnly = !flag;
+            txtCEP.ReadOnly = !flag;
+            txtUF.ReadOnly = !flag;
+            ckb_Ativo.AutoCheck = flag;
+
+        }
+        
     }
+
 }

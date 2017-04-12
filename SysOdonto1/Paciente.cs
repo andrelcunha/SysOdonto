@@ -117,17 +117,23 @@ namespace SysOdonto1
         }
         public bool existeCodigo(int codigo)
 		{
-			string result = Searchbycodigo(codigo);
-			bool flagExiste = !(result.Equals(string.Empty));
-			return flagExiste;
-		}
-		public int proximoCodigo()
+            var sQuery = string.Format("SELECT COUNT(codigo) FROM tb_paciente" +
+                                          " WHERE codigo = '{0}';", codigo);
+            var conn = new dbconnect.dbConnect_pg(sQuery);
+            var Table = conn.get_table();
+            string result = string.Empty;
+            if (Table.Rows.Count != 0)
+                result = Table.Rows[0][0].ToString();      
+            bool flagExiste = !(result.Equals(string.Empty));
+            return flagExiste;
+        }
+        public int proximoCodigo()
 		{
 			int codigo=0;
 			var sQuery = "SELECT MAX(codigo) FROM public.tb_paciente;";
 			var conn = new dbconnect.dbConnect_pg(sQuery);
 			var Table = conn.get_table();
-			if (Table.Rows.Count != 0)
+			if ((Table.Rows.GetType()).Equals(DBNull.Value))
 				codigo = Convert.ToInt32(Table.Rows[0].ItemArray[0]);
 			return ++codigo;
 		}

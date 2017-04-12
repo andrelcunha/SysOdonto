@@ -10,7 +10,7 @@ namespace dbconnect
 		private string sServer = "localhost";
 		private string sPort = "5432";
 		private string sUser = "sa_sysodonto";
-		private string sPass = "sys0d0nt0";
+		private string sPass = "saciperere";
 		private string sDb = "sysodonto";
 
 		private DataSet ds = new DataSet();

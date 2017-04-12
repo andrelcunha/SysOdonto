@@ -65,7 +65,7 @@ namespace SysOdonto1
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             getText();
-            if (paciente.existeCodigo(codigo))
+            //if (paciente.existeCodigo(codigo))
                 codigo = paciente.proximoCodigo();
             string[] values = { Convert.ToString(codigo),"'"+nome+"'",
                 "'"+dataNasc+"'",

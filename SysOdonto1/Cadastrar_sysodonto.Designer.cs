@@ -65,7 +65,9 @@
             // 
             // txtTelefone
             // 
-            this.txtTelefone.Location = new System.Drawing.Point(12, 217);
+            this.txtTelefone.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtTelefone.Location = new System.Drawing.Point(558, 165);
+            this.txtTelefone.MaxLength = 10;
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(100, 20);
             this.txtTelefone.TabIndex = 10;
@@ -79,6 +81,7 @@
             // 
             // txtNumero
             // 
+            this.txtNumero.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txtNumero.Location = new System.Drawing.Point(614, 75);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(100, 20);
@@ -124,6 +127,7 @@
             // cmb_UF
             // 
             this.cmb_UF.FormattingEnabled = true;
+            this.cmb_UF.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.cmb_UF.Items.AddRange(new object[] {
             "AC",
             "AL",
@@ -150,13 +154,13 @@
             "SE"});
             this.cmb_UF.Location = new System.Drawing.Point(377, 165);
             this.cmb_UF.Name = "cmb_UF";
-            this.cmb_UF.Size = new System.Drawing.Size(218, 21);
+            this.cmb_UF.Size = new System.Drawing.Size(49, 21);
             this.cmb_UF.TabIndex = 8;
             // 
             // ckb_Ativo
             // 
             this.ckb_Ativo.AutoSize = true;
-            this.ckb_Ativo.Location = new System.Drawing.Point(252, 217);
+            this.ckb_Ativo.Location = new System.Drawing.Point(12, 217);
             this.ckb_Ativo.Name = "ckb_Ativo";
             this.ckb_Ativo.Size = new System.Drawing.Size(95, 17);
             this.ckb_Ativo.TabIndex = 11;
@@ -186,7 +190,8 @@
             // 
             // txtCEP
             // 
-            this.txtCEP.Location = new System.Drawing.Point(614, 165);
+            this.txtCEP.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtCEP.Location = new System.Drawing.Point(442, 165);
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(100, 20);
             this.txtCEP.TabIndex = 9;
@@ -266,7 +271,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(611, 149);
+            this.label9.Location = new System.Drawing.Point(439, 149);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(28, 13);
             this.label9.TabIndex = 23;
@@ -285,7 +290,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 201);
+            this.label11.Location = new System.Drawing.Point(552, 149);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(49, 13);
             this.label11.TabIndex = 25;

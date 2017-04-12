@@ -284,7 +284,18 @@ namespace SysOdonto1
             ckb_Ativo.AutoCheck = flag;
 
         }
-        
+
+        private void rbCodigo_CheckedChanged(object sender, EventArgs e)
+        {
+            txtNome.ReadOnly = true;
+            txtCodigo.ReadOnly = false;
+        }
+
+        private void rbNome_CheckedChanged(object sender, EventArgs e)
+        {
+            txtNome.ReadOnly = false;
+            txtCodigo.ReadOnly = true;
+        }
     }
 
 }

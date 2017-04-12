@@ -48,8 +48,9 @@ namespace SysOdonto1
         {
             clear();
 
-            void clear() {
-
+        }
+        private void clear()
+        {
                 txtCodigo.Text = "";
                 txtBairro.Text = "";
                 txtCidade.Text = "";
@@ -59,14 +60,13 @@ namespace SysOdonto1
                 txtNumero.Text = "";
                 txtTelefone.Text = "";
                 cmb_UF.Text = "";
-                ckb_Ativo.Checked = false;            }
+                txtCEP.Text = "";
+                ckb_Ativo.Checked = false;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             getText();
-            //if (paciente.existeCodigo(codigo))
-                codigo = paciente.proximoCodigo();
             string[] values = { Convert.ToString(codigo),"'"+nome+"'",
                 "'"+dataNasc+"'",
                 "'"+logradouro+"'",
@@ -74,15 +74,18 @@ namespace SysOdonto1
                 "'"+bairro+"'", "'"+cidade+"'",
                 "'"+estado+"'", cep,
                 fone, ativo.ToString() };
-            if (!paciente.existeCodigo(codigo))
+            if (paciente.existeCodigo(codigo))
             {
-                paciente.Insert(values);
-                if (paciente.existeCodigo(codigo))
-
-                    btnSalvar.Visible = false; ;
-
+                MessageBox.Show("Paciente cadastrado com sucesso.", "Cadastro", MessageBoxButtons.OK);
+                clear();
+                btnSalvar.Enabled = false;
             }
-
+            else
+            {
+                DialogResult dr = MessageBox.Show(this, "Nao foi possível efetuar o cadastro. Tente novamente", "Falha", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dr.Equals(DialogResult.Cancel))
+                    this.Close();
+            }
         }
         private void getText()
         {
